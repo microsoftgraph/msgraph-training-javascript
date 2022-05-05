@@ -1,0 +1,7 @@
+{
+    "sourceDirectory": "./demo",
+    "exampleConfigFile": "./graphtutorial/appSettings.example.js",
+    "configFile": "appSettings.js",
+    "archiveFile": "JavaScriptQuickStart.zip",
+    "zipReadMe": "./README.md"
+}
