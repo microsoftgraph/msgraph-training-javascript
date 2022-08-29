@@ -14,7 +14,7 @@
     "eslint": "^8.22.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0"
+    "eslint-plugin-promise": "^6.0.1"
   },
   "dependencies": {
     "@azure/identity": "^2.1.0",
