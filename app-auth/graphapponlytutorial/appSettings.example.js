@@ -3,13 +3,8 @@
 
 const settings = {
   'clientId': 'YOUR_CLIENT_ID_HERE',
-  'clientSecret': 'YOUR_CLIENT_SECRET_HERE_IF_USING_APP_ONLY',
-  'tenantId': 'common',
-  'graphUserScopes': [
-    'user.read',
-    'mail.read',
-    'mail.send'
-  ]
+  'clientSecret': 'YOUR_CLIENT_SECRET_HERE',
+  'tenantId': 'YOUR_TENANT_ID_HERE',
 };
 
 module.exports = settings;

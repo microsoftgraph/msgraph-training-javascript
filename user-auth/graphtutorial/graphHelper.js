@@ -22,7 +22,7 @@ function initializeGraphForUserAuth(settings, deviceCodePrompt) {
 
   _deviceCodeCredential = new azure.DeviceCodeCredential({
     clientId: settings.clientId,
-    tenantId: settings.authTenant,
+    tenantId: settings.tenantId,
     userPromptCallback: deviceCodePrompt
   });
 

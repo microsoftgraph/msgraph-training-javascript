@@ -22,7 +22,6 @@ async function main() {
     'Display access token',
     'List my inbox',
     'Send mail',
-    'List users (requires app-only)',
     'Make a Graph call'
   ];
 
@@ -47,10 +46,6 @@ async function main() {
         await sendMailAsync();
         break;
       case 3:
-        // List users
-        await listUsersAsync();
-        break;
-      case 4:
         // Run any Graph code
         await makeGraphCallAsync();
         break;
@@ -147,6 +142,7 @@ async function sendMailAsync() {
 // </SendMailSnippet>
 
 // <ListUsersSnippet>
+/*
 async function listUsersAsync() {
   try {
     const userPage = await graphHelper.getUsersAsync();
@@ -167,6 +163,7 @@ async function listUsersAsync() {
     console.log(`Error getting users: ${err}`);
   }
 }
+*/
 // </ListUsersSnippet>
 
 // <MakeGraphCallSnippet>
