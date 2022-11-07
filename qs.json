@@ -1,5 +1,5 @@
 {
-    "sourceDirectory": "./demo",
+    "sourceDirectory": "./user-auth",
     "exampleConfigFile": "./graphtutorial/appSettings.example.js",
     "configFile": "appSettings.js",
     "archiveFile": "JavaScriptQuickStart.zip",
