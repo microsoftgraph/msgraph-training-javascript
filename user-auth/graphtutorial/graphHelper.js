@@ -169,9 +169,6 @@ module.exports.getUsersAsync = getUsersAsync;
 // or other code
 async function makeGraphCallAsync() {
   // INSERT YOUR CODE HERE
-  // Note: if using _appClient, be sure to call ensureGraphForAppOnlyAuth
-  // before using it.
-  // ensureGraphForAppOnlyAuth();
 }
 module.exports.makeGraphCallAsync = makeGraphCallAsync;
 // </MakeGraphCallSnippet>
