@@ -64,7 +64,7 @@ To use PowerShell, you'll need the Microsoft Graph PowerShell SDK. If you do not
 
 ## Configure the sample
 
-1. Rename [appSettings.example.ts](./graphtutorial/appSettings.example.ts) to `appSettings.ts` and update the values according to the following table.
+1. Rename [appSettings.example.js](./graphtutorial/appSettings.example.js) to `appSettings.js` and update the values according to the following table.
 
     | Setting | Value |
     |---------|-------|

@@ -141,31 +141,6 @@ async function sendMailAsync() {
 }
 // </SendMailSnippet>
 
-// <ListUsersSnippet>
-/*
-async function listUsersAsync() {
-  try {
-    const userPage = await graphHelper.getUsersAsync();
-    const users = userPage.value;
-
-    // Output each user's details
-    for (const user of users) {
-      console.log(`User: ${user.displayName ?? 'NO NAME'}`);
-      console.log(`  ID: ${user.id}`);
-      console.log(`  Email: ${user.mail ?? 'NO EMAIL'}`);
-    }
-
-    // If @odata.nextLink is not undefined, there are more users
-    // available on the server
-    const moreAvailable = userPage['@odata.nextLink'] != undefined;
-    console.log(`\nMore users available? ${moreAvailable}`);
-  } catch (err) {
-    console.log(`Error getting users: ${err}`);
-  }
-}
-*/
-// </ListUsersSnippet>
-
 // <MakeGraphCallSnippet>
 async function makeGraphCallAsync() {
   try {
