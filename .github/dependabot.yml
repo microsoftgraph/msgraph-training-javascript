@@ -6,6 +6,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/demo/graphtutorial" # Location of package manifests
+    directory: "/user-auth/graphtutorial" # Location of package manifests
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/app-auth/graphapponlytutorial" # Location of package manifests
     schedule:
       interval: "weekly"
