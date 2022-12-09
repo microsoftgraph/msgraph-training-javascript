@@ -22,7 +22,7 @@ function initializeGraphForUserAuth(settings, deviceCodePrompt) {
 
   _deviceCodeCredential = new azure.DeviceCodeCredential({
     clientId: settings.clientId,
-    tenantId: settings.authTenant,
+    tenantId: settings.tenantId,
     userPromptCallback: deviceCodePrompt
   });
 
@@ -120,58 +120,11 @@ async function sendMailAsync(subject, body, recipient) {
 module.exports.sendMailAsync = sendMailAsync;
 // </SendMailSnippet>
 
-// <AppOnyAuthConfigSnippet>
-let _clientSecretCredential = undefined;
-let _appClient = undefined;
-
-function ensureGraphForAppOnlyAuth() {
-  // Ensure settings isn't null
-  if (!_settings) {
-    throw new Error('Settings cannot be undefined');
-  }
-
-  if (!_clientSecretCredential) {
-    _clientSecretCredential = new azure.ClientSecretCredential(
-      _settings.tenantId,
-      _settings.clientId,
-      _settings.clientSecret
-    );
-  }
-
-  if (!_appClient) {
-    const authProvider = new authProviders.TokenCredentialAuthenticationProvider(
-      _clientSecretCredential, {
-        scopes: [ 'https://graph.microsoft.com/.default' ]
-      });
-
-    _appClient = graph.Client.initWithMiddleware({
-      authProvider: authProvider
-    });
-  }
-}
-// </AppOnyAuthConfigSnippet>
-
-// <GetUsersSnippet>
-async function getUsersAsync() {
-  ensureGraphForAppOnlyAuth();
-
-  return _appClient?.api('/users')
-    .select(['displayName', 'id', 'mail'])
-    .top(25)
-    .orderby('displayName')
-    .get();
-}
-module.exports.getUsersAsync = getUsersAsync;
-// </GetUsersSnippet>
-
 // <MakeGraphCallSnippet>
 // This function serves as a playground for testing Graph snippets
 // or other code
 async function makeGraphCallAsync() {
   // INSERT YOUR CODE HERE
-  // Note: if using _appClient, be sure to call ensureGraphForAppOnlyAuth
-  // before using it.
-  // ensureGraphForAppOnlyAuth();
 }
 module.exports.makeGraphCallAsync = makeGraphCallAsync;
 // </MakeGraphCallSnippet>
