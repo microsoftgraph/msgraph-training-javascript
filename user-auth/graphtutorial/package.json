@@ -17,7 +17,7 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
-    "@azure/identity": "^3.3.2",
+    "@azure/identity": "^4.0.0",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "isomorphic-fetch": "^3.0.0",
     "readline-sync": "^1.4.10"
