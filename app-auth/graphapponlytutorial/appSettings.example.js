@@ -1,12 +1,12 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
 // <SettingsSnippet>
 const settings = {
-  'clientId': 'YOUR_CLIENT_ID_HERE',
-  'clientSecret': 'YOUR_CLIENT_SECRET_HERE',
-  'tenantId': 'YOUR_TENANT_ID_HERE',
+  clientId: 'YOUR_CLIENT_ID_HERE',
+  clientSecret: 'YOUR_CLIENT_SECRET_HERE',
+  tenantId: 'YOUR_TENANT_ID_HERE',
 };
 
-module.exports = settings;
+export default settings;
 // </SettingsSnippet>

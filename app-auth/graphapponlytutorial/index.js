@@ -1,11 +1,16 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
 // <ProgramSnippet>
-const readline = require('readline-sync');
+import { keyInSelect } from 'readline-sync';
 
-const settings = require('./appSettings');
-const graphHelper = require('./graphHelper');
+import settings from './appSettings.js';
+import {
+  initializeGraphForAppOnlyAuth,
+  getAppOnlyTokenAsync,
+  getUsersAsync,
+  makeGraphCallAsync,
+} from './graphHelper.js';
 
 async function main() {
   console.log('JavaScript Graph App-Only Tutorial');
@@ -15,14 +20,10 @@ async function main() {
   // Initialize Graph
   initializeGraph(settings);
 
-  const choices = [
-    'Display access token',
-    'List users',
-    'Make a Graph call'
-  ];
+  const choices = ['Display access token', 'List users', 'Make a Graph call'];
 
   while (choice != -1) {
-    choice = readline.keyInSelect(choices, 'Select an option', { cancel: 'Exit' });
+    choice = keyInSelect(choices, 'Select an option', { cancel: 'Exit' });
 
     switch (choice) {
       case -1:
@@ -39,7 +40,7 @@ async function main() {
         break;
       case 2:
         // Run any Graph code
-        await makeGraphCallAsync();
+        await doGraphCallAsync();
         break;
       default:
         console.log('Invalid choice! Please try again.');
@@ -52,14 +53,14 @@ main();
 
 // <InitializeGraphSnippet>
 function initializeGraph(settings) {
-  graphHelper.initializeGraphForAppOnlyAuth(settings);
+  initializeGraphForAppOnlyAuth(settings);
 }
 // </InitializeGraphSnippet>
 
 // <DisplayAccessTokenSnippet>
 async function displayAccessTokenAsync() {
   try {
-    const appOnlyToken = await graphHelper.getAppOnlyTokenAsync();
+    const appOnlyToken = await getAppOnlyTokenAsync();
     console.log(`App-only token: ${appOnlyToken}`);
   } catch (err) {
     console.log(`Error getting app-only access token: ${err}`);
@@ -70,7 +71,7 @@ async function displayAccessTokenAsync() {
 // <ListUsersSnippet>
 async function listUsersAsync() {
   try {
-    const userPage = await graphHelper.getUsersAsync();
+    const userPage = await getUsersAsync();
     const users = userPage.value;
 
     // Output each user's details
@@ -91,9 +92,9 @@ async function listUsersAsync() {
 // </ListUsersSnippet>
 
 // <MakeGraphCallSnippet>
-async function makeGraphCallAsync() {
+async function doGraphCallAsync() {
   try {
-    await graphHelper.makeGraphCallAsync();
+    await makeGraphCallAsync();
   } catch (err) {
     console.log(`Error making Graph call: ${err}`);
   }

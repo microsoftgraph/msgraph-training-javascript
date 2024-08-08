@@ -1,11 +1,18 @@
-// Copyright (c) Microsoft Corporation. All rights reserved.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT license.
 
 // <ProgramSnippet>
-const readline = require('readline-sync');
+import { keyInSelect } from 'readline-sync';
 
-const settings = require('./appSettings');
-const graphHelper = require('./graphHelper');
+import settings from './appSettings.js';
+import {
+  initializeGraphForUserAuth,
+  getUserAsync,
+  getUserTokenAsync,
+  getInboxAsync,
+  sendMailAsync,
+  makeGraphCallAsync,
+} from './graphHelper.js';
 
 async function main() {
   console.log('JavaScript Graph Tutorial');
@@ -22,11 +29,11 @@ async function main() {
     'Display access token',
     'List my inbox',
     'Send mail',
-    'Make a Graph call'
+    'Make a Graph call',
   ];
 
   while (choice != -1) {
-    choice = readline.keyInSelect(choices, 'Select an option', { cancel: 'Exit' });
+    choice = keyInSelect(choices, 'Select an option', { cancel: 'Exit' });
 
     switch (choice) {
       case -1:
@@ -43,11 +50,11 @@ async function main() {
         break;
       case 2:
         // Send an email message
-        await sendMailAsync();
+        await sendMailToSelfAsync();
         break;
       case 3:
         // Run any Graph code
-        await makeGraphCallAsync();
+        await doGraphCallAsync();
         break;
       default:
         console.log('Invalid choice! Please try again.');
@@ -60,7 +67,7 @@ main();
 
 // <InitializeGraphSnippet>
 function initializeGraph(settings) {
-  graphHelper.initializeGraphForUserAuth(settings, (info) => {
+  initializeGraphForUserAuth(settings, (info) => {
     // Display the device code message to
     // the user. This tells them
     // where to go to sign in and provides the
@@ -73,7 +80,7 @@ function initializeGraph(settings) {
 // <GreetUserSnippet>
 async function greetUserAsync() {
   try {
-    const user = await graphHelper.getUserAsync();
+    const user = await getUserAsync();
     console.log(`Hello, ${user?.displayName}!`);
     // For Work/school accounts, email is in mail property
     // Personal accounts, email is in userPrincipalName
@@ -87,7 +94,7 @@ async function greetUserAsync() {
 // <DisplayAccessTokenSnippet>
 async function displayAccessTokenAsync() {
   try {
-    const userToken = await graphHelper.getUserTokenAsync();
+    const userToken = await getUserTokenAsync();
     console.log(`User token: ${userToken}`);
   } catch (err) {
     console.log(`Error getting user access token: ${err}`);
@@ -98,7 +105,7 @@ async function displayAccessTokenAsync() {
 // <ListInboxSnippet>
 async function listInboxAsync() {
   try {
-    const messagePage = await graphHelper.getInboxAsync();
+    const messagePage = await getInboxAsync();
     const messages = messagePage.value;
 
     // Output each message's details
@@ -120,20 +127,19 @@ async function listInboxAsync() {
 // </ListInboxSnippet>
 
 // <SendMailSnippet>
-async function sendMailAsync() {
+async function sendMailToSelfAsync() {
   try {
     // Send mail to the signed-in user
     // Get the user for their email address
-    const user = await graphHelper.getUserAsync();
+    const user = await getUserAsync();
     const userEmail = user?.mail ?? user?.userPrincipalName;
 
     if (!userEmail) {
-      console.log('Couldn\'t get your email address, canceling...');
+      console.log("Couldn't get your email address, canceling...");
       return;
     }
 
-    await graphHelper.sendMailAsync('Testing Microsoft Graph',
-      'Hello world!', userEmail);
+    await sendMailAsync('Testing Microsoft Graph', 'Hello world!', userEmail);
     console.log('Mail sent.');
   } catch (err) {
     console.log(`Error sending mail: ${err}`);
@@ -142,9 +148,9 @@ async function sendMailAsync() {
 // </SendMailSnippet>
 
 // <MakeGraphCallSnippet>
-async function makeGraphCallAsync() {
+async function doGraphCallAsync() {
   try {
-    await graphHelper.makeGraphCallAsync();
+    await makeGraphCallAsync();
   } catch (err) {
     console.log(`Error making Graph call: ${err}`);
   }
