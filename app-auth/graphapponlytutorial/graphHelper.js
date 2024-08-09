@@ -7,7 +7,7 @@ import { ClientSecretCredential } from '@azure/identity';
 import { Client } from '@microsoft/microsoft-graph-client';
 // prettier-ignore
 import { TokenCredentialAuthenticationProvider } from
-  '@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials';
+  '@microsoft/microsoft-graph-client/authProviders/azureTokenCredentials/index.js';
 
 let _settings = undefined;
 let _clientSecretCredential = undefined;
