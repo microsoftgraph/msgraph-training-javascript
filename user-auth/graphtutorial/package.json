@@ -19,7 +19,7 @@
     "prettier": "^3.5.3"
   },
   "dependencies": {
-    "@azure/identity": "^4.10.0",
+    "@azure/identity": "^4.10.1",
     "@microsoft/microsoft-graph-client": "^3.0.7",
     "isomorphic-fetch": "^3.0.0",
     "readline-sync": "^1.4.10"
