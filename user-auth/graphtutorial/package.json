@@ -12,9 +12,9 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^9.39.2",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-header": "^3.1.1",
+    "@tony.ganchev/eslint-plugin-header": "^3.4.4",
+    "eslint": "^10.3.0",
+    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.5",
     "prettier": "^3.8.3"
   },
