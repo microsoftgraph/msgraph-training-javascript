@@ -9,7 +9,17 @@ updates:
     directory: "/user-auth/graphtutorial" # Location of package manifests
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "npm"
     directory: "/app-auth/graphapponlytutorial" # Location of package manifests
     schedule:
       interval: "weekly"
+    cooldown:
+      default-days: 7
+  - package-ecosystem: "github-actions"
+    directory: "/" # Location of GitHub Actions workflows
+    schedule:
+      interval: "weekly"
+    cooldown:
+      default-days: 7

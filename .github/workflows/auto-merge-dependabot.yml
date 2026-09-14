@@ -3,7 +3,7 @@ name: Auto-merge dependabot updates
 on:
   pull_request:
     branches: [ main ]
-    
+
 permissions:
   pull-requests: write
   contents: write
@@ -13,16 +13,16 @@ jobs:
   dependabot-merge:
 
     runs-on: ubuntu-latest
-    
+
     if: ${{ github.actor == 'dependabot[bot]' }}
 
     steps:
       - name: Dependabot metadata
         id: metadata
-        uses: dependabot/fetch-metadata@v1.1.1
+        uses: dependabot/fetch-metadata@25dd0e34f4fe68f24cc83900b1fe3fe149efef98 # v3.1.0
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
-      
+
       - name: Enable auto-merge for Dependabot PRs
         if: ${{steps.metadata.outputs.update-type != 'version-update:semver-major'}}
         run: gh pr merge --auto --merge "$PR_URL"
