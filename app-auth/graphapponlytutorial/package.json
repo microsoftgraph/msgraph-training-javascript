@@ -16,7 +16,7 @@
     "eslint": "^10.10.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.6",
-    "prettier": "^3.9.6"
+    "prettier": "^3.9.8"
   },
   "dependencies": {
     "@azure/identity": "^4.13.3",
